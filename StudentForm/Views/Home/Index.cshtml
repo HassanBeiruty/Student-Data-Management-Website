@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <!-- Include AngularJS and AngularJS Bootstrap scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script> <!-- Add this line -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery (required for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- AngularUI Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+
+    <!-- Include other AngularJS scripts -->
+    <script src="~/JsFilesStudent/app.js"></script>
+    <script src="~/JsFilesStudent/PaginationService.js"></script>
+    <script src="~/JsFilesStudent/StudentController.js"></script>
+    <script src="~/JsFilesStudent/GenderEnum.js"></script>
+    <script src="~/JsFilesStudent/StudentService.js"></script>
+    <script src="~/JsFilesStudent/ModalService.js"></script>
+    <script src="~/JsFilesStudent/baseEditorController.js"></script>
+    <script src="~/JsFilesStudent/StudentWebApiService.js"></script>
+    <script src="~/JsFilesStudent/WebApiService.js"></script>
+    <script src="~/JsFilesStudent/genderSelector.js"></script>
+    <script src="~/JsFilesUniversity/baseEditorControllerUni.js"></script>
+    <script src="~/JsFilesUniversity/UniversityController.js"></script>
+    <script src="~/JsFilesUniversity/UniversityService.js"></script>
+    <script src="~/JsFilesUniversity/UniversityWebApiService.js"></script>
+    <script src="~/JsFilesDepartment/DepartmentController.js"></script>
+    <script src="~/JsFilesDepartment/DepartmentService.js"></script>
+    <script src="~/JsFilesDepartment/DepartmentWebApiService.js"></script>
+    <script src="~/JsFilesDepartment/UniversitySelector.js"></script>
+    <script src="~/JsFilesDepartment/DepartmentSelector.js"></script>
+    <script src="~/JsFilesDepartment/baseEditorControllerDepartment.js"></script>
+    <script src="~/JsFilesStudent/paymentMethod.js"></script>
+    <script src="~/JsFilesStudent/paymentMethodBank.js"></script>
+    <script src="~/JsFilesStudent/paymentMethodCash.js"></script>
+    <script src="~/JsFilesDepartment/departmentGrid.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="DepartmentController">
+
+
+        <div ng-include="'/PartielViews/Department.html'"></div>
+
+
+    </div>
+    <hr />
+    <hr />
+
+    <div ng-controller="UniversityController">
+
+
+        <div ng-include="'/PartielViews/University.html'"></div>
+
+
+    </div>
+    <hr />
+    <hr />
+
+    <div ng-controller="StudentController">
+
+
+        <div ng-include="'/PartielViews/main.html'"></div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>

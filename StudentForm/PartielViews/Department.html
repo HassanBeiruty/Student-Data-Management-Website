@@ -1,0 +1,63 @@
+﻿<main ng-controller="DepartmentController">
+
+    <button ng-click="goToDepartmentForm()">All Departments</button>
+
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" ng-model="nameFilter" required>
+    <!-- Filter Button -->
+    <button ng-click="filterDepartments()" style="margin-bottom: 10px;">Search</button>
+
+    <hr />
+
+    <!-- Add Button -->
+    <button ng-click="openAddDepartmentModal()" style="margin-bottom: 10px;">Add Department</button>
+
+    <!-- Table of Departments -->
+    <table style="width: 100%; height: 300px; margin-bottom:20px; border-collapse: collapse; border: 1px solid #ddd;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Name</th>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">University</th>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="department in currentPageDepartments track by department.Id" style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px;">{{ department.Name }}</td>
+                <td style="padding: 12px;">{{ department.UniversityName }}</td>
+                <td style="padding: 12px;">
+                    <button class="btn btn-primary" ng-click="showContextMenu(department)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+    <!--<h3>All Departments</h3>
+    <department-grid universityid="null"></department-grid>-->
+
+    <hr />
+    <!-- Pagination Buttons -->
+    <div>
+        <button class="btn btn-primary" ng-click="changePage('first')" ng-disabled="currentPage === 1">
+            <span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span> First
+        </button>
+        <button class="btn btn-primary" ng-click="changePage('prev')" ng-disabled="currentPage === 1">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous
+        </button>
+
+        <button class="btn btn-primary" ng-repeat="page in pages"
+                ng-class="{'active': currentPage === page.title}" ng-style="{'margin': '5px'}" ng-click="changePage(page.title)">
+            {{ page.title }}
+        </button>
+
+        <button class="btn btn-primary" ng-click="changePage('next')" ng-disabled="currentPage === pages.length">
+            Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-primary" ng-click="changePage('last')" ng-disabled="currentPage === pages.length">
+            Last <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+        </button>
+    </div>
+
+</main>

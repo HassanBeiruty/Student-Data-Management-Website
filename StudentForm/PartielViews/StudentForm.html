@@ -1,0 +1,35 @@
+﻿<div ng-controller="baseEditorController">
+    <div class="modal-header">
+        <h3 class="modal-title">Student Form</h3>
+    </div>
+    <div class="modal-body">
+
+        <label>Name:</label>
+        <input type="text" ng-model="studentName">
+        <br />
+        <gender-selector selected-gender="selectedGender" on-selection-changed="handleUniversitySelectionChanged(value)"></gender-selector>
+        <br />
+        <university-selector selected-university="selectedUniversity" on-selection-changed="handleUniversitySelectionChanged(value)"></university-selector><br />
+        <department-selector selected-department="selectedDepartment" university-id="selectedUniversity.Id"></department-selector>
+
+
+        <br>
+        <h2>Payment Method:</h2>
+        <payment-method ng-model="selectedMethod"></payment-method>
+        <div ng-switch="selectedMethod">
+            <div ng-switch-when="Cash">
+                <payment-method-cash ng-model="cashData"></payment-method-cash>
+            </div>
+            <div ng-switch-when="Bank">
+                <payment-method-bank ng-model="bankData"></payment-method-bank>
+            </div>
+        </div>
+        <button ng-click="submit()">Submit</button>
+
+    </div><br /><br />
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+        <button class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+</div>
+

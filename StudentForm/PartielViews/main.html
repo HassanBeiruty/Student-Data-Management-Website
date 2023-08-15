@@ -1,0 +1,83 @@
+﻿<main ng-controller="StudentController">
+
+
+    <button ng-click="goToStudentForm()">Go All Student</button>
+
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" ng-model="nameFilter" required>
+
+
+
+
+
+    <!-- Filter Button -->
+    <button ng-click="filterStudents()" style="margin-bottom: 10px;">Search</button>
+    <!--<button ng-click="AddStudent()" style="margin-bottom: 10px;">AddStudent</button>-->
+    <hr />
+
+    <!-- Add Button -->
+    <button ng-click="openAddStudentModal()" style="margin-bottom: 10px;">Add Student</button>
+
+    <!-- Table of Students -->
+    <table style="width: 100%; height: 300px ; margin-bottom:20px; border-collapse: collapse; border: 1px solid #ddd;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Name</th>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Gender</th>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">DepartmentName</th>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">UniversityName</th>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Amount</th>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">PaymentMethod</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="student in currentPageStudents track by student.Id" style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px;">{{ student.Name }}</td>
+                <td style="padding: 12px;">{{ student.GenderString }}</td>
+                <td style="padding: 12px;">{{ student.DepartmentName }}</td>
+                <td style="padding: 12px;">{{ student.UniversityName }}</td>
+                <td style="padding: 12px;">{{ student.PaymentMethod.Amount }}</td>
+                <td style="padding: 12px;">{{ student.PaymentMethod.$type.split(',')[0].trim() }}</td>
+
+
+
+
+                <td style="padding: 12px;">
+                    <button class="btn btn-primary" ng-click="showContextMenu(student)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <!-- Pagination Buttons -->
+    <div>
+        <button class="btn btn-primary" ng-click="changePage('first')" ng-disabled="currentPage === 1">
+            <span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span> First
+        </button>
+        <button class="btn btn-primary" ng-click="changePage('prev')" ng-disabled="currentPage === 1">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous
+        </button>
+
+        <button class="btn btn-primary" ng-repeat="page in pages"
+                ng-class="{'active': currentPage === page.title}" ng-style="{'margin': '5px'}" ng-click="changePage(page.title)">
+            {{ page.title }}
+        </button>
+
+        <button class="btn btn-primary" ng-click="changePage('next')" ng-disabled="currentPage === pages.length">
+            Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-primary" ng-click="changePage('last')" ng-disabled="currentPage === pages.length">
+            Last <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+        </button>
+    </div>
+
+
+
+
+
+
+</main>

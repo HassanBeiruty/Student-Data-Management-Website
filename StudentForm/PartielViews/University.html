@@ -1,0 +1,110 @@
+﻿<main ng-controller="UniversityController">
+
+
+    <button ng-click="goToStudentForm()">All Universities</button>
+
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" ng-model="nameFilter" required>
+
+
+
+
+
+    <!-- Filter Button -->
+    <button ng-click="filterUniversities()" style="margin-bottom: 10px;">Search</button>
+   
+    <hr />
+
+    <!-- Add Button -->
+    <button ng-click="openAddUniversityModal()" style="margin-bottom: 10px;">Add University</button>
+
+    <!-- Table of Students -->
+    <table style="width: 100%; height: 300px ; margin-bottom:20px; border-collapse: collapse; border: 1px solid #ddd;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Name</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="University in currentPageUniversities track by University.Id" style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px;">{{ University.Name }}</td>
+
+                <td style="padding: 12px;">
+                    <button class="btn btn-primary" ng-click="showContextMenu(University)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+    <!--<table style="width: 100%; height: 300px ; margin-bottom:20px; border-collapse: collapse; border: 1px solid #ddd;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="University in currentPageUniversities track by University.Id" style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px;">{{ University.Name }}</td>
+
+                <td style="padding: 12px;">
+                    <button class="btn btn-primary" ng-click="showContextMenu(University)">
+                        Edit
+                    </button>
+                </td>
+
+                <td>
+                    <button ng-click="expandUniversity(University.Id)">
+                        {{ isUniversityExpanded(University.Id) ? 'Collapse' : 'Expand' }}
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="University in currentPageUniversities track by University.Id">
+                <td colspan="2" ng-if="isUniversityExpanded(University.Id)">
+                    <h4 style="padding: 12px;">{{ University.Name }} Departments</h4>
+                    <department-grid universityid="University.Id" ></department-grid>
+                </td>
+            </tr>
+        </tbody>
+    </table>-->
+
+
+
+
+
+
+
+    <hr />
+
+
+
+    <!-- Pagination Buttons -->
+    <div>
+        <button class="btn btn-primary" ng-click="changePage('first')" ng-disabled="currentPage === 1">
+            <span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span> First
+        </button>
+        <button class="btn btn-primary" ng-click="changePage('prev')" ng-disabled="currentPage === 1">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous
+        </button>
+
+        <button class="btn btn-primary" ng-repeat="page in pages"
+                ng-class="{'active': currentPage === page.title}" ng-style="{'margin': '5px'}" ng-click="changePage(page.title)">
+            {{ page.title }}
+        </button>
+
+        <button class="btn btn-primary" ng-click="changePage('next')" ng-disabled="currentPage === pages.length">
+            Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-primary" ng-click="changePage('last')" ng-disabled="currentPage === pages.length">
+            Last <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+        </button>
+    </div>
+
+
+
+
+
+
+</main>
